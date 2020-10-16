@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.is;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 public class BackwardArrayTest {
     @Test
     public void whenMultiCallhasNextThenTrue() {
@@ -26,7 +28,7 @@ public class BackwardArrayTest {
     }
 
     @SuppressWarnings("checkstyle:MethodParamPad")
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void whenNextFromEmpty() {
         BackwardArrayIt it = new BackwardArrayIt (
                 new int[] {}
