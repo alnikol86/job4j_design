@@ -20,7 +20,7 @@ public class MatrixIt implements Iterator<Integer> {
         if (column >= data[row].length && row == data.length - 1) {
             return false;
         }
-        if (data[row][column] null) {
+        if (data[row][column] == 0) {
             next();
         }
         return true;
