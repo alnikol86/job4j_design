@@ -29,4 +29,13 @@ public class FlatMapTest {
         assertThat(flat.next(), is(2));
         assertThat(flat.next(), is(3));
     }
+    @Test
+    public void whenMultyHasNext() {
+        Iterator<Iterator<Integer>> data = List.of(
+                List.of(1).iterator()
+        ).iterator();
+        FlatMap<Integer> flat = new FlatMap<>(data);
+        assertThat(flat.hasNext(), is(true));
+        assertThat(flat.hasNext(), is(true));
+    }
 }

@@ -2,8 +2,6 @@ package ru.job4j.iterator;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.NoSuchElementException;
 
 public class FlatMap<T> implements Iterator<T> {
@@ -16,6 +14,7 @@ public class FlatMap<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
+        data. > cursor;
         return false;
     }
 
@@ -24,10 +23,7 @@ public class FlatMap<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        Iterator<T> flat =
-                data.stream()
-                .flatMap(Integer :: stream)
-                .collect(Collectors.toList());
+        data
         return cursor.next();
     }
 
