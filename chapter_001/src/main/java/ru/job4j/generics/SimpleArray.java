@@ -3,19 +3,16 @@ package ru.job4j.generics;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class SimpleArray<T> implements Iterable {
+public class SimpleArray<T> implements Iterable <T> {
     private T[] models;
+    private int size;
 
     SimpleArray(int modelsSize) {
-        this.models = new T[modelsSize];
+        this.models = (T[]) new Object[modelsSize];
     }
 
     public void add(T model) {
-        for (int i = 0; i < models.length - 1; i++) {
-            if (models[i] == null) {
-                models[i] = model;
-            }
-        }
+        models[size++] = model;
     }
 
     public void set(int index, T model) {
