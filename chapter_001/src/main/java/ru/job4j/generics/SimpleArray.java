@@ -1,11 +1,13 @@
 package ru.job4j.generics;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class SimpleArray<T> implements Iterable <T> {
+public class SimpleArray<T> implements Iterable<T> {
     private T[] models;
     private int size;
+    private int point = 0;
 
     SimpleArray(int modelsSize) {
         this.models = (T[]) new Object[modelsSize];
@@ -16,32 +18,38 @@ public class SimpleArray<T> implements Iterable <T> {
     }
 
     public void set(int index, T model) {
-        if (Objects.checkIndex(index, models.length - 1) > -1) {
-            models[index] = model;
-        }
+        Objects.checkIndex(index, size);
+        models[index] = model;
     }
 
     public void remove(int index) {
-        if (Objects.checkIndex(index, models.length - 1) > -1) {
-            System.arraycopy(models, index, models, index,
-                    models.length - index - 1);
-        }
+        Objects.checkIndex(index, size);
+        System.arraycopy(models, index, models, index, size - index);
+        size--;
     }
 
     public T get(int index) {
         T model = null;
-        if (Objects.checkIndex(index, models.length - 1) > -1) {
-            model = models[index];
-        }
+        Objects.checkIndex(index, size);
+        model = models[index];
         return model;
     }
 
     @Override
     public Iterator iterator() {
-        Iterator elem = null;
-        for (T el : models) {
-            el.toString();
-        }
-        return elem;
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                return point < size - 1;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return models[point++];
+            }
+        };
     }
 }
