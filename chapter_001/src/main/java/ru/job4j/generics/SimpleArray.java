@@ -7,9 +7,8 @@ import java.util.Objects;
 public class SimpleArray<T> implements Iterable<T> {
     private T[] models;
     private int size;
-    private int point = 0;
 
-    SimpleArray(int modelsSize) {
+    public SimpleArray(int modelsSize) {
         this.models = (T[]) new Object[modelsSize];
     }
 
@@ -38,9 +37,11 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public Iterator iterator() {
         return new Iterator<T>() {
+            private int point = 0;
+
             @Override
             public boolean hasNext() {
-                return point < size - 1;
+                return point < size;
             }
 
             @Override
