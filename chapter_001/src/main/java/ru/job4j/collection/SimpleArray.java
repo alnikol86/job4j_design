@@ -23,9 +23,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     public void add(T model) {
         modCount++;
-        if (containers.length <= size) {
-            grow();
-        }
+        grow();
         containers[size++] = model;
     }
 
@@ -53,8 +51,8 @@ public class SimpleArray<T> implements Iterable<T> {
         };
     }
     private void grow() {
-        capasity = capasity * 2;
         if (containers.length <= size) {
+            capasity = capasity * 2;
             containers = Arrays.copyOf(containers, capasity);
         }
     }
