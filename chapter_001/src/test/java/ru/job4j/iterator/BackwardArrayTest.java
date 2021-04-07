@@ -30,7 +30,7 @@ public class BackwardArrayTest {
     @SuppressWarnings("checkstyle:MethodParamPad")
     @Test(expected = NoSuchElementException.class)
     public void whenNextFromEmpty() {
-        BackwardArrayIt it = new BackwardArrayIt (
+        BackwardArrayIt it = new BackwardArrayIt(
                 new int[] {}
         );
         it.next();

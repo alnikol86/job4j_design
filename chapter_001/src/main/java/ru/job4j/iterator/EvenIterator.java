@@ -16,6 +16,7 @@ public class EvenIterator implements Iterator<Integer> {
         }
         return true;
     }
+
     @Override
     public boolean hasNext() {
         if (!checkPoint()) {
@@ -26,9 +27,6 @@ public class EvenIterator implements Iterator<Integer> {
             if (!checkPoint()) {
                 return false;
             }
-//            if (point >= data.length - 1) {
-//                return false;
-//            }
         }
         return true;
     }
