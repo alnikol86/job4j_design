@@ -64,6 +64,7 @@ public class ForwardLinked<T> implements Iterable<T> {
             previousEl = currentEl;
             currentEl = nextEl;
         }
+        head = previousEl;
         return result;
     }
 
