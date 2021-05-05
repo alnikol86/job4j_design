@@ -35,33 +35,30 @@ public class ListUtils {
     public static <T> void removeIf(List<T> list, Predicate<T> filter) {
         ListIterator<T> i = list.listIterator();
         while (i.hasNext()) {
-            if (filter == list.get(i.nextIndex())) {
+            T next = i.next();
+            if (filter.test(next)) {
                 i.remove();
-                break;
             }
-            i.next();
         }
     }
 
     public static <T> void replaceIf(List<T> list, Predicate<T> filter, T value) {
         ListIterator<T> i = list.listIterator();
         while (i.hasNext()) {
-            if (filter == list.get(i.nextIndex())) {
-                list.add(i.nextIndex(), value);
+            T next = i.next();
+            if (filter.test(next)) {
+                list.set(i.nextIndex() - 1, value);
             }
-            i.next();
         }
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        ListIterator<T> iFirst = list.listIterator();
-        ListIterator<T> iSecond = elements.listIterator();
-        while (iFirst.hasNext() || iSecond.hasNext()) {
-            if (list.get(iFirst.nextIndex()) == elements.get(iSecond.nextIndex())) {
-                iFirst.remove();
+        ListIterator<T> i = list.listIterator();
+        while (i.hasNext()) {
+            T next = i.next();
+            if (elements.contains(next)) {
+                i.remove();
             }
-            iFirst.next();
-            iSecond.next();
         }
     }
 }
