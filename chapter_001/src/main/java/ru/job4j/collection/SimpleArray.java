@@ -4,12 +4,12 @@ import java.util.*;
 
 public class SimpleArray<T> implements Iterable<T> {
     private T[] containers;
-    private int capasity = 1;
+    private int capacity = 1;
     private int size;
     private int modCount;
 
     public SimpleArray() {
-        this.containers = (T[]) new Object[capasity];
+        this.containers = (T[]) new Object[capacity];
     }
 
     public SimpleArray(int manualCapasity) {
@@ -52,8 +52,8 @@ public class SimpleArray<T> implements Iterable<T> {
     }
     private void grow() {
         if (containers.length <= size) {
-            capasity = capasity * 2;
-            containers = Arrays.copyOf(containers, capasity);
+            capacity = capacity * 2;
+            containers = Arrays.copyOf(containers, capacity);
         }
     }
 }
