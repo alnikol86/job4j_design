@@ -1,0 +1,1 @@
+insert into transport(type, speed, size) values('airplane', 1000, 'big')

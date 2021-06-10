@@ -1,0 +1,1 @@
+update transport set type = 'car';
