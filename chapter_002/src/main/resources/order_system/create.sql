@@ -1,18 +1,19 @@
 create table comments1(
 	id serial primary key,
-	name varchar(255)
+	name varchar(255),
+	items_id int references items(id)
 );
 
 create table attaches(
 	id serial primary key,
-	name varchar(255)
+	name varchar(255),
+	items_id int references items(id)
 );
 
 create table items(
 	id serial primary key,
 	name varchar(255),
-	comments1_id int references comments1(id),
-	attaches_id int references attaches(id),
+	users_id int references users(id),
 	categories_id int references categories(id),
 	states_id int references states(id)
 );
@@ -20,14 +21,12 @@ create table items(
 create table users(
 	id serial primary key,
 	name varchar(255),
-	roles_id int references roles(id),
-	items_id int references items(id)
+	roles_id int references roles(id)
 );
 
 create table roles(
 	id serial primary key,
-	name varchar(255),
-	rules_id int references users(id)
+	name varchar(255)
 );
 
 create table rules(
